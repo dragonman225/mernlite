@@ -1,21 +1,31 @@
-# FongMUN
+# MERNLite &middot; [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-## Development Environment
-### Install dependencies
-```
+> A Clean & Minimal Boilerplate for MongoDB + Express + ReactJS + NodeJS Applications
+
+_**Note**: The boilerplate is currently under heavy development!_
+
+## Setup
+```bash
+git clone https://github.com/dragonman225/MERNLite.git
 npm install
 ```
+## Feature
+* Development server auto reloading
+* Path alias
+    * e.g. `import { server } from 'config'`
+* ESLint
 
-### NPM Scripts
-* Start development server
-```
-npm run dev
-```
+## Available Commands
+* `npm run dev` - Start development server
+* `npm run build:app` - Build ReactJS production app bundle
+* `npm run build:server` - Build NodeJS production server
+* `npm run build` - Build both ReactJS app bundle and NodeJS server
 
-### Project Structure
-```
+## Project Structure
+```bash
 src
 ├── app
+│   └── index.js
 └── server
     ├── api
     │   ├── controllers
@@ -29,14 +39,18 @@ src
     │   └── test.js
     └── server.js
 ```
-* `app/`: React frontend code
-* `server/`: Backend code
-* `api/`: `index.js` define routes.
-* `api/controllers/`: Handle routes. One controller for one feature group.
-* `config/`: Store settings.
-* `models/`: Mongoose Schemas. One file for one Schema group, registered in `index.js`
+* `src/app/`: React frontend code
+* `src/server/`: Backend code
+* `src/api/`: `index.js` define routes.
+* `src/api/controllers/`: Handle routes. One controller for one feature group.
+* `src/config/`: Store settings.
+* `src/models/`: Mongoose Schemas. One file for one Schema group, registered in `index.js`
 
-### Current status
-* Finish mongodb interfacing, test with:
-    * `GET` `/api/testa`: Get all data from collection `testa` in database `fongmun` in `json` format.
-    * `POST` `/api/testa`: Save data to collection `testa` in database `fongmun`. Request body format: `{ "name": "a string" }`.
+## Current status
+- [x] #### Mongodb interfacing
+    * Test with:
+        * `GET` `/api/testa` -  Get all data from collection `testa` in database `fongmun` in `json` format.
+        * `POST` `/api/testa` -  Save data to collection `testa` in database `fongmun`. Request body format: `{ "name": "a string" }`.
+- [x] #### Build for Production
+- [ ] #### ReactJS hot reloading
+- [ ] #### Test real app development experience

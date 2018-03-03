@@ -21,5 +21,5 @@ app.listen(server.port, async (err) => {
     console.error(err);
     throw (err);
   }
-  console.log(`Server is listening on ${server.host}:${server.port}`);
+  console.log(`${server.name} is listening on ${server.host}:${server.port}`);
 });

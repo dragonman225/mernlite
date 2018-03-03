@@ -6,7 +6,10 @@
         "import"
     ],
     "env": {
-        "jquery": true
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "node": true
     },
     "rules": {
       "no-console": 0,
