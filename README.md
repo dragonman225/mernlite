@@ -6,7 +6,7 @@ _**Note**: The boilerplate is currently under heavy development!_
 
 ## Setup
 ```bash
-git clone https://github.com/dragonman225/MERNLite.git
+git clone https://github.com/dragonman225/mernlite.git
 npm install
 ```
 ## Feature
