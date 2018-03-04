@@ -2,13 +2,13 @@
   "name": "MERNLite",
   "version": "0.1.0",
   "description": "A Clean & Minimal Boilerplate for MongoDB + Express + ReactJS + NodeJS Applications",
-  "main": "src/index.js",
+  "main": "src/server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch src -x babel-node src/server/server.js",
-    "build:app": "webpack --config webpack.app.config.js -p --progress",
-    "build:server": "webpack --config webpack.server.config.js -p --progress",
-    "build": "scripts/build-all.sh"
+    "build:app": "webpack --env.production --env.src=app -p --progress",
+    "build:server": "webpack --env.production --env.src=server -p --progress",
+    "build": "webpack --env.production --env.src=all -p --progress"
   },
   "author": "W.Z. Wang",
   "license": "MIT",

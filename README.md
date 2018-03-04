@@ -49,8 +49,8 @@ src
 ## Current status
 - [x] #### Mongodb interfacing
     * Test with:
-        * `GET` `/api/testa` -  Get all data from collection `testa` in database `fongmun` in `json` format.
-        * `POST` `/api/testa` -  Save data to collection `testa` in database `fongmun`. Request body format: `{ "name": "a string" }`.
+        * `GET` `/api/testa` -  Get all data from collection `testa` in database `mernlite` in `json` format.
+        * `POST` `/api/testa` -  Save data to collection `testa` in database `mernlite`. Request body format: `{ "name": "a string" }`.
 - [x] #### Build for Production
 - [ ] #### ReactJS hot reloading
 - [ ] #### Test real app development experience

@@ -1,4 +1,4 @@
-import { test } from 'models';
+import { test } from '~models';
 
 const getTestA = async (req, res) => {
   const data = await test.testA.find((err, result) => result);

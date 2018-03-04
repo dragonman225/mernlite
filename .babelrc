@@ -4,9 +4,9 @@
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
-        "config": "./src/server/config",
-        "api": "./src/server/api",
-        "models": "./src/server/models"
+        "~config": "./src/server/config",
+        "~api": "./src/server/api",
+        "~models": "./src/server/models"
       }
     }]
   ]
