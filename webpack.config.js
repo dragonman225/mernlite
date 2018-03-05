@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const nodeModules = fs.readdirSync('node_modules').reduce((acc, mod) => {
   if (mod === '.bin') {
@@ -9,13 +10,17 @@ const nodeModules = fs.readdirSync('node_modules').reduce((acc, mod) => {
   return acc;
 }, {});
 
-const productionConfig = {
+const developmentConfig = {
   app: {
-    mode: 'production',
-    entry: ['./src/app/index.js'],
+    mode: 'development',
+    entry: {
+      app: path.resolve(__dirname, 'src/app/index_dev.js'),
+      /* vendors: ['react'], */
+    },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'app.js',
+      filename: 'js/app.js',
+      publicPath: '',
     },
     module: {
       rules: [{
@@ -24,14 +29,55 @@ const productionConfig = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              [
-                'react',
-              ],
-            ],
+            presets: ['react'],
+            plugins: ['react-hot-loader/babel'],
           },
         },
       }],
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: 'src/app/template.html',
+        hash: true,
+      }),
+    ],
+  },
+};
+
+const productionConfig = {
+  app: {
+    mode: 'production',
+    entry: {
+      app: path.resolve(__dirname, 'src/app/index_prod.js'),
+      /* vendors: ['react'], */
+    },
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'js/app.js',
+      publicPath: '',
+    },
+    module: {
+      rules: [{
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['react'],
+          },
+        },
+      }],
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: 'src/app/template.html',
+        hash: true,
+      }),
+    ],
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+      },
     },
   },
   server: {
@@ -54,7 +100,9 @@ const productionConfig = {
               [
                 'env',
                 {
-                  targets: { node: 7 },
+                  targets: {
+                    node: 'current',
+                  },
                   useBuiltIns: true,
                 },
               ],
@@ -79,6 +127,14 @@ module.exports = (env) => {
         return [productionConfig.app, productionConfig.server];
       default:
         console.error(`Unknown webpack environment ${env}`);
+    }
+  } else if (env.development) {
+    switch (env.src) {
+      case 'app':
+        return developmentConfig.app;
+      default:
+        console.error(`Unknown webpack environment ${env}`);
+        return {};
     }
   } else {
     console.error(`Unknown webpack environment ${env}`);

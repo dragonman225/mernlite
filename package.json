@@ -5,7 +5,8 @@
   "main": "src/server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch src -x babel-node src/server/server.js",
+    "dev:app": "webpack-dev-server --env.development --env.src=app --progress --hot",
+    "dev:server": "nodemon --watch src -x babel-node src/server/server.js",
     "build:app": "webpack --env.production --env.src=app -p --progress",
     "build:server": "webpack --env.production --env.src=server -p --progress",
     "build": "webpack --env.production --env.src=all -p --progress"
@@ -17,7 +18,8 @@
     "express": "^4.16.2",
     "mongoose": "^5.0.7",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^4.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -32,8 +34,10 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.7.0",
+    "html-webpack-plugin": "^3.0.4",
     "nodemon": "^1.15.1",
     "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.10"
+    "webpack-cli": "^2.0.10",
+    "webpack-dev-server": "^3.1.0"
   }
 }

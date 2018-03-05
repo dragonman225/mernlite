@@ -8,6 +8,6 @@
         "~api": "./src/server/api",
         "~models": "./src/server/models"
       }
-    }]
+    }],
   ]
 }

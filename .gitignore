@@ -29,5 +29,5 @@ node_modules
 public
 .DS_Store
 
-#npm5+
+# npm5+
 ./package-lock.json
