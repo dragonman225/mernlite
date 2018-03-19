@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const nodeModules = fs.readdirSync('node_modules').reduce((acc, mod) => {
   if (mod === '.bin') {
