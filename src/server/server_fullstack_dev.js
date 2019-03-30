@@ -6,7 +6,9 @@ import mongoose from 'mongoose';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpack from 'webpack';
 
-mongoose.connect(server.mongodbUri);
+mongoose.connect(server.mongodbUri, {useNewUrlParser: true}, (err) => {
+  if (err) console.log('Cannot connect to database.');
+});
 
 // Use webpack config for 'dev:app' in middleware
 const config = require('../../webpack.config.js')({ development: true, src: 'app' });

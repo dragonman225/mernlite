@@ -4,7 +4,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
-mongoose.connect(server.mongodbUri);
+mongoose.connect(server.mongodbUri, {useNewUrlParser: true}, (err) => {
+  if (err) console.log('Cannot connect to database.');
+});
 
 const app = express();
 
